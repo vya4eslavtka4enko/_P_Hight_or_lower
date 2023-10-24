@@ -13,19 +13,20 @@ def random_choose(data):
 
 
 def compare_elements(data):
-    compare_a = data[random_choose(data)[0]]
-    compare_b = data[random_choose(data)[1]]
-    print(f"Compare A {compare_a["name"]},a {compare_a["description"]},from {compare_a['country']}")
-    print(vs)
-    print(f"Compare B {compare_b["name"]},a {compare_b["description"]},from {compare_b['country']}")
-    choose = input('Make your choose "A" or "B"')
-    if compare_a['follower_count'] > compare_b['follower_count'] and choose == 'a':
-        print('you win')
-    elif compare_a['follower_count'] < compare_b['follower_count'] and choose == 'b':
-        print('you win')
-    elif compare_a['follower_count'] < compare_b['follower_count'] and choose == 'a':
-        print('you lose')
-    elif compare_a['follower_count'] > compare_b['follower_count'] and choose == 'b':
-        print('you lose')
+    score = 1
+    while score != 0:
+        compare_a = data[random_choose(data)[0]]
+        compare_b = data[random_choose(data)[1]]
+        print(f"Compare A {compare_a["name"]},a {compare_a["description"]},from {compare_a['country']}")
+        print(vs)
+        print(f"Compare B {compare_b["name"]},a {compare_b["description"]},from {compare_b['country']}")
+        choose = input('Make your choose "A" or "B"')
+        if compare_a['follower_count'] > compare_b['follower_count'] and choose == 'a' or compare_a['follower_count'] < compare_b['follower_count'] and choose == 'b':
+                score += 1
+                print(score)
+                print('you win')
+        elif compare_a['follower_count'] < compare_b['follower_count'] and choose == 'a' or compare_a['follower_count'] > compare_b['follower_count'] and choose == 'b':
+                score -= 1
+                print('you lose')
 
 compare_elements(data)
